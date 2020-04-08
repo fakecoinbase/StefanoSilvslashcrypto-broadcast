@@ -9,15 +9,20 @@ function App() {
 			<div className="first-grid">
 				<div className="mainNews"></div>
 				<div className="secondaryNews"></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
+				<div className="secondaryNews"></div>
+				<div className="secondaryNews"></div>
+				<div className="secondaryNews"></div>
+				<div className="secondaryNews"></div>
 			</div>
 
 			<div className="second-grid">
-				<div></div>
-				<div></div>
+				<div>
+					<h3>RECENT NEWS</h3>
+					<div className="grid_recent">
+						<div className="mainNews_recent"></div>
+						<div className="otherNews_recent"></div>
+					</div>
+				</div>
 				<ul>
 					<li>1 BTC = $13.2232</li>
 					<li></li>
