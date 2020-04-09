@@ -72,9 +72,68 @@ function App() {
 							</li>
 						</ul>
 					</div>
+					<h3>CRYPTO MINING EVENTS</h3>
+					<div className="grid_recent">
+						<div className="mainNews_recent">
+							<div className="mainNews_recent_img"></div>
+							<div className="mainNews_recent_content">
+								<h3>Title goes here</h3>
+								<small>
+									by <strong>David Palmer</strong>, Jan 4th 2020
+								</small>
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+									accusantium doloremque laudantium, totam rem aperiam, eaque
+									ipsa quae ab illo inventore.
+								</p>
+							</div>
+						</div>
+						<div className="mainNews_recent">
+							<div className="mainNews_recent_img"></div>
+							<div className="mainNews_recent_content">
+								<h3>Title goes here</h3>
+								<small>
+									by <strong>David Palmer</strong>, Jan 4th 2020
+								</small>
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+									accusantium doloremque laudantium, totam rem aperiam, eaque
+									ipsa quae ab illo inventore.
+								</p>
+							</div>
+						</div>
+						<div className="mainNews_recent">
+							<div className="mainNews_recent_img"></div>
+							<div className="mainNews_recent_content">
+								<h3>Title goes here</h3>
+								<small>
+									by <strong>David Palmer</strong>, Jan 4th 2020
+								</small>
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+									accusantium doloremque laudantium, totam rem aperiam, eaque
+									ipsa quae ab illo inventore.
+								</p>
+							</div>
+						</div>
+						<div className="mainNews_recent">
+							<div className="mainNews_recent_img"></div>
+							<div className="mainNews_recent_content">
+								<h3>Title goes here</h3>
+								<small>
+									by <strong>David Palmer</strong>, Jan 4th 2020
+								</small>
+								<p>
+									Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+									accusantium doloremque laudantium, totam rem aperiam, eaque
+									ipsa quae ab illo inventore.
+								</p>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div className="second_grid_third_column">
-					<ul class="conversions">
+					<ul className="conversions">
 						<li>1 BTC = $13.2232</li>
 						<li></li>
 						<li></li>
