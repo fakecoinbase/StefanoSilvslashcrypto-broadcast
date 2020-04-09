@@ -11,6 +11,14 @@ class App extends React.Component {
 				publishedAt: '',
 				description: ''
 			}
+		],
+		oldArticles: [
+			{
+				title: '',
+				autor: '',
+				publishedAt: '',
+				description: ''
+			}
 		]
 	};
 
@@ -40,8 +48,7 @@ class App extends React.Component {
 
 	getPastDays = x => {
 		let date = new Date();
-		let pastDate = new Date(date.setDate(date.getDate() - x));
-		console.log(pastDate);
+		let pastDate = new Date(date.setDate(date.getDate() - x)).toISOString();
 		return pastDate;
 	};
 
@@ -58,15 +65,35 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=popularity&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?from=${this.getPastDays(
+					14
+				)}&from=${this.getPastDays(
+					7
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
+					process.env.REACT_APP_API_KEY
+				}`
+			)
+			.then(res => {
+				this.setState({
+					oldArticles: res.data.articles
+				});
+			});
+		axios
+			.get(
+				`https://newsapi.org/v2/everything?from=${this.getPastDays(
+					3
+				)}&from=${this.getPastDays(
+					0
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
+					process.env.REACT_APP_API_KEY
+				}`
 			)
 			.then(res => {
 				console.log(res.data);
 				this.setState({
-					popularArticles: res.data.articles
+					newArticles: res.data.articles
 				});
 			});
-		this.getPastDays(4);
 	}
 
 	render() {
