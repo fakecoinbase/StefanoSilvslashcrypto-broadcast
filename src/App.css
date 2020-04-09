@@ -21,7 +21,6 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 150px 150px 150px;
 	gap: 20px;
-	width: calc(inherit - 40px);
 }
 
 .mainNews {
