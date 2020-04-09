@@ -38,6 +38,13 @@ class App extends React.Component {
 		return dateFormatted;
 	};
 
+	getPastDays = x => {
+		let date = new Date();
+		let pastDate = new Date(date.setDate(date.getDate() - x));
+		console.log(pastDate);
+		return pastDate;
+	};
+
 	componentDidMount() {
 		axios
 			.get(
@@ -48,6 +55,18 @@ class App extends React.Component {
 					recentArticles: res.data.articles
 				});
 			});
+
+		axios
+			.get(
+				`https://newsapi.org/v2/everything?qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=popularity&apiKey=${process.env.REACT_APP_API_KEY}`
+			)
+			.then(res => {
+				console.log(res.data);
+				this.setState({
+					popularArticles: res.data.articles
+				});
+			});
+		this.getPastDays(4);
 	}
 
 	render() {
