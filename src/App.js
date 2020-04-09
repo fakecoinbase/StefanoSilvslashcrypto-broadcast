@@ -1,8 +1,54 @@
 import React from 'react';
 import './App.css';
+import axios from 'axios';
 
 class App extends React.Component {
-	state = {};
+	state = {
+		recentArticles: [
+			{
+				title: '',
+				autor: '',
+				publishedAt: '',
+				description: ''
+			}
+		]
+	};
+
+	convertDate = x => {
+		const monthNames = [
+			'January',
+			'February',
+			'March',
+			'April',
+			'May',
+			'June',
+			'July',
+			'August',
+			'September',
+			'October',
+			'November',
+			'December'
+		];
+		let month =
+			x.substr(5, 2)[0] == 0
+				? monthNames[x.substr(6, 1)[0] - 1]
+				: monthNames[x.substr(5, 2) - 1];
+		let dateFormatted = `${x.substr(8, 2)} ${month} ${x.substr(0, 4)}`;
+
+		return dateFormatted;
+	};
+
+	componentDidMount() {
+		axios
+			.get(
+				`https://newsapi.org/v2/everything?qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+			)
+			.then(res => {
+				this.setState({
+					recentArticles: res.data.articles
+				});
+			});
+	}
 
 	render() {
 		return (
@@ -25,15 +71,12 @@ class App extends React.Component {
 							<div className="mainNews_recent">
 								<div className="mainNews_recent_img"></div>
 								<div className="mainNews_recent_content">
-									<h3>Title goes here</h3>
+									<h3>{this.state.recentArticles[0].title}</h3>
 									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
+										by <strong>{this.state.recentArticles[0].author}</strong>,{' '}
+										{this.convertDate(this.state.recentArticles[0].publishedAt)}
 									</small>
-									<p>
-										Sed ut perspiciatis unde omnis iste natus error sit
-										voluptatem accusantium doloremque laudantium, totam rem
-										aperiam, eaque ipsa quae ab illo inventore.
-									</p>
+									<p>{this.state.recentArticles[0].description}</p>
 								</div>
 							</div>
 							<ul className="otherNews_recent">
