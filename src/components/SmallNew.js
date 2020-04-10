@@ -6,7 +6,7 @@ class SmallNew extends React.Component {
 			{
 				title: '',
 				autor: '',
-				publishedAt: '',
+				publishedAt: '2020-04-08T09:05:54Z',
 				description: ''
 			}
 		]
@@ -23,10 +23,10 @@ class SmallNew extends React.Component {
 			<li className="li_grid">
 				<div className="otherNews_recent_image"></div>
 				<div>
-					<h4>{this.state.article[0].title}</h4>
+					<h4>{this.state.article.title}</h4>
 					<small>
-						by <strong>{this.state.article[0].author}</strong>,{' '}
-						{this.props.convertDate(this.state.article[0].publishedAt)}
+						by <strong>{this.state.article.author}</strong>,{' '}
+						{this.props.convertDate(this.state.article.publishedAt)}
 					</small>
 				</div>
 			</li>

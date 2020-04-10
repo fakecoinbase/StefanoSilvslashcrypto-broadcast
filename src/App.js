@@ -47,11 +47,14 @@ class App extends React.Component {
 			'November',
 			'December'
 		];
-		let month =
-			x.substr(5, 2)[0] == 0
-				? monthNames[x.substr(6, 1)[0] - 1]
-				: monthNames[x.substr(5, 2) - 1];
-		let dateFormatted = `${x.substr(8, 2)} ${month} ${x.substr(0, 4)}`;
+		let dateFormatted;
+		if (x) {
+			let month =
+				x.substr(5, 2)[0] == 0
+					? monthNames[x.substr(6, 1)[0] - 1]
+					: monthNames[x.substr(5, 2) - 1];
+			dateFormatted = `${x.substr(8, 2)} ${month} ${x.substr(0, 4)}`;
+		}
 
 		return dateFormatted;
 	};
@@ -99,7 +102,6 @@ class App extends React.Component {
 				}`
 			)
 			.then(res => {
-				console.log(res.data);
 				this.setState({
 					newArticles: res.data.articles
 				});
@@ -136,10 +138,16 @@ class App extends React.Component {
 								</div>
 							</div>
 							<ul className="otherNews_recent">
-								<SmallNew
-									article={this.state.newArticles}
-									convertDate={this.convertDate}
-								/>
+								{this.state.recentArticles
+									.slice(1, this.state.recentArticles.length)
+									.map(article => {
+										return (
+											<SmallNew
+												article={article}
+												convertDate={this.convertDate}
+											/>
+										);
+									})}
 							</ul>
 						</div>
 						<h3>CRYPTO MINING EVENTS</h3>
