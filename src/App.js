@@ -1,6 +1,6 @@
 import React from 'react';
 import SmallNew from './components/SmallNew.js';
-
+import BigNew from './components/BigNew.js';
 import './App.css';
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ class App extends React.Component {
 				description: ''
 			}
 		],
-		newArticles: [
+		popularArticles: [
 			{
 				title: '',
 				autor: '',
@@ -97,13 +97,13 @@ class App extends React.Component {
 					3
 				)}&from=${this.getPastDays(
 					0
-				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=9&language=en&sortBy=popularity&apiKey=${
 					process.env.REACT_APP_API_KEY
 				}`
 			)
 			.then(res => {
 				this.setState({
-					newArticles: res.data.articles
+					popularArticles: res.data.articles
 				});
 			});
 	}
@@ -150,64 +150,13 @@ class App extends React.Component {
 									})}
 							</ul>
 						</div>
-						<h3>CRYPTO MINING EVENTS</h3>
+						<h3>MOST POPULAR LAST WEEK</h3>
 						<div className="grid_recent">
-							<div className="mainNews_recent">
-								<div className="mainNews_recent_img"></div>
-								<div className="mainNews_recent_content">
-									<h3>Title goes here</h3>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-									<p>
-										Sed ut perspiciatis unde omnis iste natus error sit
-										voluptatem accusantium doloremque laudantium, totam rem
-										aperiam, eaque ipsa quae ab illo inventore.
-									</p>
-								</div>
-							</div>
-							<div className="mainNews_recent">
-								<div className="mainNews_recent_img"></div>
-								<div className="mainNews_recent_content">
-									<h3>Title goes here</h3>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-									<p>
-										Sed ut perspiciatis unde omnis iste natus error sit
-										voluptatem accusantium doloremque laudantium, totam rem
-										aperiam, eaque ipsa quae ab illo inventore.
-									</p>
-								</div>
-							</div>
-							<div className="mainNews_recent">
-								<div className="mainNews_recent_img"></div>
-								<div className="mainNews_recent_content">
-									<h3>Title goes here</h3>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-									<p>
-										Sed ut perspiciatis unde omnis iste natus error sit
-										voluptatem accusantium doloremque laudantium, totam rem
-										aperiam, eaque ipsa quae ab illo inventore.
-									</p>
-								</div>
-							</div>
-							<div className="mainNews_recent">
-								<div className="mainNews_recent_img"></div>
-								<div className="mainNews_recent_content">
-									<h3>Title goes here</h3>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-									<p>
-										Sed ut perspiciatis unde omnis iste natus error sit
-										voluptatem accusantium doloremque laudantium, totam rem
-										aperiam, eaque ipsa quae ab illo inventore.
-									</p>
-								</div>
-							</div>
+							{this.state.oldArticles.map(article => {
+								return (
+									<BigNew article={article} convertDate={this.convertDate} />
+								);
+							})}
 						</div>
 					</div>
 					<div className="second_grid_third_column">
@@ -221,42 +170,16 @@ class App extends React.Component {
 						</ul>
 						<h3>POPULAR NEWS</h3>
 						<ul className="otherNews_recent">
-							<li className="li_grid">
-								<div className="otherNews_recent_image"></div>
-								<div>
-									<h4>Here it goes the title</h4>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-								</div>
-							</li>
-							<li className="li_grid">
-								<div className="otherNews_recent_image"></div>
-								<div>
-									<h4>Here it goes the title</h4>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-								</div>
-							</li>
-							<li className="li_grid">
-								<div className="otherNews_recent_image"></div>
-								<div>
-									<h4>Here it goes the title</h4>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-								</div>
-							</li>
-							<li className="li_grid">
-								<div className="otherNews_recent_image"></div>
-								<div>
-									<h4>Here it goes the title</h4>
-									<small>
-										by <strong>David Palmer</strong>, Jan 4th 2020
-									</small>
-								</div>
-							</li>
+							{this.state.popularArticles
+								.slice(5, this.state.popularArticles.length)
+								.map(article => {
+									return (
+										<SmallNew
+											article={article}
+											convertDate={this.convertDate}
+										/>
+									);
+								})}
 						</ul>
 					</div>
 				</div>

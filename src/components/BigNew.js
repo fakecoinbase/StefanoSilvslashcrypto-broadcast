@@ -1,6 +1,6 @@
 import React from 'react';
 
-class SmallNew extends React.Component {
+class BigNew extends React.Component {
 	state = {
 		article: [
 			{
@@ -20,18 +20,19 @@ class SmallNew extends React.Component {
 	}
 	render() {
 		return (
-			<li className="li_grid">
-				<div className="otherNews_recent_image"></div>
-				<div>
-					<h4>{this.state.article.title}</h4>
+			<div className="mainNews_recent">
+				<div className="mainNews_recent_img"></div>
+				<div className="mainNews_recent_content">
+					<h3>{this.state.article.title}</h3>
 					<small>
 						by <strong>{this.state.article.author}</strong>,{' '}
 						{this.props.convertDate(this.state.article.publishedAt)}
 					</small>
+					<p>{this.state.article.description}</p>
 				</div>
-			</li>
+			</div>
 		);
 	}
 }
 
-export default SmallNew;
+export default BigNew;
