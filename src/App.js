@@ -2,6 +2,7 @@ import React from 'react';
 import SmallNew from './components/SmallNew.js';
 import BigNew from './components/BigNew.js';
 import TopNew from './components/TopNew.js';
+import images from './images';
 import './App.css';
 import axios from 'axios';
 
