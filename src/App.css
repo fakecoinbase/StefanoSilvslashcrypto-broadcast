@@ -31,6 +31,11 @@
 
 .secondaryNews {
 	background: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1561451478/sample.jpg');
+	color: white;
+	padding: 10px;
+}
+.secondaryNews > h3 {
+	padding-top: 10%;
 }
 
 /* The grid for the second part of the page */

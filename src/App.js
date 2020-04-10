@@ -115,7 +115,12 @@ class App extends React.Component {
 
 				<div className="first-grid">
 					<div className="mainNews"></div>
-					<div className="secondaryNews"></div>
+					<div className="secondaryNews">
+						<h3>title goes here title goes heretitle goes here</h3>
+						<small>
+							{this.convertDate(this.state.recentArticles[0].publishedAt)}
+						</small>
+					</div>
 					<div className="secondaryNews"></div>
 					<div className="secondaryNews"></div>
 					<div className="secondaryNews"></div>
@@ -140,11 +145,12 @@ class App extends React.Component {
 							<ul className="otherNews_recent">
 								{this.state.recentArticles
 									.slice(1, this.state.recentArticles.length)
-									.map(article => {
+									.map((article, index) => {
 										return (
 											<SmallNew
 												article={article}
 												convertDate={this.convertDate}
+												key={index}
 											/>
 										);
 									})}
@@ -152,9 +158,13 @@ class App extends React.Component {
 						</div>
 						<h3>MOST POPULAR LAST WEEK</h3>
 						<div className="grid_recent">
-							{this.state.oldArticles.map(article => {
+							{this.state.oldArticles.map((article, i) => {
 								return (
-									<BigNew article={article} convertDate={this.convertDate} />
+									<BigNew
+										article={article}
+										convertDate={this.convertDate}
+										key={i}
+									/>
 								);
 							})}
 						</div>
@@ -172,11 +182,12 @@ class App extends React.Component {
 						<ul className="otherNews_recent">
 							{this.state.popularArticles
 								.slice(5, this.state.popularArticles.length)
-								.map(article => {
+								.map((article, key) => {
 									return (
 										<SmallNew
 											article={article}
 											convertDate={this.convertDate}
+											key={key}
 										/>
 									);
 								})}
