@@ -1,6 +1,7 @@
 import React from 'react';
 import SmallNew from './components/SmallNew.js';
 import BigNew from './components/BigNew.js';
+import TopNew from './components/TopNew.js';
 import './App.css';
 import axios from 'axios';
 
@@ -115,16 +116,15 @@ class App extends React.Component {
 
 				<div className="first-grid">
 					<div className="mainNews"></div>
-					<div className="secondaryNews">
-						<h3>title goes here title goes heretitle goes here</h3>
-						<small>
-							{this.convertDate(this.state.recentArticles[0].publishedAt)}
-						</small>
-					</div>
-					<div className="secondaryNews"></div>
-					<div className="secondaryNews"></div>
-					<div className="secondaryNews"></div>
-					<div className="secondaryNews"></div>
+					{this.state.popularArticles.slice(0, 5).map((article, x) => {
+						return (
+							<TopNew
+								article={article}
+								convertDate={this.convertDate}
+								key={x}
+							/>
+						);
+					})}
 				</div>
 
 				<div className="second-grid">
