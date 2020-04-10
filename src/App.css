@@ -26,13 +26,15 @@
 .mainNews {
 	grid-column: 1 / 3;
 	grid-row: 1 / 3;
-	background: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1582693933/phimh2q6twjq2h6toh80.jpg');
+	background-color: rgb(198, 198, 198);
 }
 
 .secondaryNews {
-	background: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1561451478/sample.jpg');
 	color: white;
 	padding: 10px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 /* The grid for the second part of the page */
@@ -88,11 +90,10 @@
 
 .mainNews_recent {
 	display: grid;
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 2fr 3fr;
 }
 
 .mainNews_recent_img {
-	background: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1575706571/tortuga_coders_zrlhgb.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -129,8 +130,9 @@
 }
 
 .otherNews_recent_image {
-	height: 100px;
-	background: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1582693910/ogkrtqnbgjfkdjugppkv.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 /* The grid inside the recent news */

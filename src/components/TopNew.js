@@ -26,7 +26,10 @@ class TopNew extends React.Component {
 	}
 	render() {
 		return (
-			<div className="secondaryNews">
+			<div
+				className="secondaryNews"
+				style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
+			>
 				<h3>{this.state.article.title}</h3>
 				<small>{this.props.convertDate(this.state.article.publishedAt)}</small>
 			</div>

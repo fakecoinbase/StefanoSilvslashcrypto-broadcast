@@ -26,7 +26,10 @@ class SmallNew extends React.Component {
 	render() {
 		return (
 			<li className="li_grid">
-				<div className="otherNews_recent_image"></div>
+				<div
+					className="otherNews_recent_image"
+					style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
+				></div>
 				<div>
 					<h4>{this.state.article.title}</h4>
 					<small>

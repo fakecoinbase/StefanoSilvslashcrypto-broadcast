@@ -132,7 +132,12 @@ class App extends React.Component {
 						<h3>RECENT NEWS</h3>
 						<div className="grid_recent">
 							<div className="mainNews_recent">
-								<div className="mainNews_recent_img"></div>
+								<div
+									className="mainNews_recent_img"
+									style={{
+										backgroundImage: `url(${this.state.recentArticles[0].urlToImage})`
+									}}
+								></div>
 								<div className="mainNews_recent_content">
 									<h3>{this.state.recentArticles[0].title}</h3>
 									<small>
