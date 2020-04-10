@@ -19,7 +19,6 @@ class TopNew extends React.Component {
 	}
 
 	componentWillReceiveProps(props) {
-		console.log('props in TopNew', props);
 		this.setState({
 			article: props.article
 		});

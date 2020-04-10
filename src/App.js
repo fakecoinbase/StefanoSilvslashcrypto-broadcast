@@ -67,7 +67,20 @@ class App extends React.Component {
 		return pastDate;
 	};
 
+	pickRandomImage = (array, number) => {
+		let result = [];
+		for (i = 0; i < number; i++) {
+			let add = array[Math.floor(Math.random() * array.length)];
+			result.push(add);
+			array.splice(array.indexOf(add), 1);
+		}
+		return result;
+	};
+
 	componentDidMount() {
+		let randomImages =
+			images.mainImg[Math.floor(Math.random() * images.mainImg.length)];
+
 		axios
 			.get(
 				`https://newsapi.org/v2/everything?excludeDomains=bleacherreport.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
