@@ -121,7 +121,7 @@ class App extends React.Component {
 							<TopNew
 								article={article}
 								convertDate={this.convertDate}
-								key={x}
+								key={new Date(article.publishedAt).getTime()}
 							/>
 						);
 					})}
@@ -150,7 +150,7 @@ class App extends React.Component {
 											<SmallNew
 												article={article}
 												convertDate={this.convertDate}
-												key={index}
+												key={new Date(article.publishedAt).getTime()}
 											/>
 										);
 									})}
@@ -163,7 +163,7 @@ class App extends React.Component {
 									<BigNew
 										article={article}
 										convertDate={this.convertDate}
-										key={i}
+										key={new Date(article.publishedAt).getTime()}
 									/>
 								);
 							})}
@@ -182,12 +182,12 @@ class App extends React.Component {
 						<ul className="otherNews_recent">
 							{this.state.popularArticles
 								.slice(5, this.state.popularArticles.length)
-								.map((article, key) => {
+								.map((article, y) => {
 									return (
 										<SmallNew
 											article={article}
 											convertDate={this.convertDate}
-											key={key}
+											key={new Date(article.publishedAt).getTime()}
 										/>
 									);
 								})}

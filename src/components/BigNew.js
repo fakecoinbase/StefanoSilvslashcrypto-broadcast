@@ -12,6 +12,12 @@ class BigNew extends React.Component {
 		]
 	};
 
+	componentDidMount() {
+		this.setState({
+			article: this.props.article
+		});
+	}
+
 	componentWillReceiveProps(props) {
 		this.setState({
 			article: props.article
