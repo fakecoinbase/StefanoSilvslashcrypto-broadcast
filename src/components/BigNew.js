@@ -33,8 +33,13 @@ class BigNew extends React.Component {
 				<div className="mainNews_recent_content">
 					<h3>{this.state.article.title}</h3>
 					<small>
-						by <strong>{this.state.article.author}</strong>,{' '}
-						{this.props.convertDate(this.state.article.publishedAt)}
+						by{' '}
+						<strong>
+							{this.state.article.source
+								? this.state.article.source.name
+								: this.state.article.author}
+						</strong>
+						, {this.props.convertDate(this.state.article.publishedAt)}
 					</small>
 					<p>{this.state.article.description}</p>
 				</div>

@@ -31,7 +31,13 @@ class TopNew extends React.Component {
 				style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
 			>
 				<h3>{this.state.article.title}</h3>
-				<small>{this.props.convertDate(this.state.article.publishedAt)}</small>
+				<small>
+					{this.props.convertDate(this.state.article.publishedAt)}
+					{' - '}
+					{this.state.article.source
+						? this.state.article.source.name
+						: this.state.article.author}
+				</small>
 			</div>
 		);
 	}

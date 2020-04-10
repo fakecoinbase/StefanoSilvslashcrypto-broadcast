@@ -69,7 +69,7 @@ class App extends React.Component {
 	componentDidMount() {
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=bleacherreport.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR stellar OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				this.setState({
@@ -79,7 +79,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=bleacherreport.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					14
 				)}&from=${this.getPastDays(
 					7
@@ -94,7 +94,7 @@ class App extends React.Component {
 			});
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=bleacherreport.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					3
 				)}&from=${this.getPastDays(
 					0

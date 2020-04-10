@@ -33,8 +33,13 @@ class SmallNew extends React.Component {
 				<div>
 					<h4>{this.state.article.title}</h4>
 					<small>
-						by <strong>{this.state.article.author}</strong>,{' '}
-						{this.props.convertDate(this.state.article.publishedAt)}
+						by{' '}
+						<strong>
+							{this.state.article.source
+								? this.state.article.source.name
+								: this.state.article.author}
+						</strong>
+						, {this.props.convertDate(this.state.article.publishedAt)}
 					</small>
 				</div>
 			</li>

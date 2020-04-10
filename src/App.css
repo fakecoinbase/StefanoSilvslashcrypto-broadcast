@@ -133,6 +133,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	max-height: 150px;
 }
 
 /* The grid inside the recent news */
