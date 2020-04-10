@@ -9,12 +9,16 @@ class TopNew extends React.Component {
 				publishedAt: '',
 				description: ''
 			}
-		]
+		],
+		image: ''
 	};
 
 	componentDidMount() {
 		this.setState({
 			article: this.props.article
+		});
+		this.setState({
+			image: this.props.image
 		});
 	}
 
@@ -22,12 +26,15 @@ class TopNew extends React.Component {
 		this.setState({
 			article: props.article
 		});
+		this.setState({
+			image: props.image
+		});
 	}
 	render() {
 		return (
 			<div
 				className="secondaryNews"
-				style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
+				style={{ backgroundImage: `url(${this.state.image})` }}
 			>
 				<h3>{this.state.article.title}</h3>
 				<small>
