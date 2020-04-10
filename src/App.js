@@ -1,4 +1,6 @@
 import React from 'react';
+import SmallNew from './components/SmallNew.js';
+
 import './App.css';
 import axios from 'axios';
 
@@ -13,6 +15,14 @@ class App extends React.Component {
 			}
 		],
 		oldArticles: [
+			{
+				title: '',
+				autor: '',
+				publishedAt: '',
+				description: ''
+			}
+		],
+		newArticles: [
 			{
 				title: '',
 				autor: '',
@@ -126,42 +136,10 @@ class App extends React.Component {
 								</div>
 							</div>
 							<ul className="otherNews_recent">
-								<li className="li_grid">
-									<div className="otherNews_recent_image"></div>
-									<div>
-										<h4>Here it goes the title</h4>
-										<small>
-											by <strong>David Palmer</strong>, Jan 4th 2020
-										</small>
-									</div>
-								</li>
-								<li className="li_grid">
-									<div className="otherNews_recent_image"></div>
-									<div>
-										<h4>Here it goes the title</h4>
-										<small>
-											by <strong>David Palmer</strong>, Jan 4th 2020
-										</small>
-									</div>
-								</li>
-								<li className="li_grid">
-									<div className="otherNews_recent_image"></div>
-									<div>
-										<h4>Here it goes the title</h4>
-										<small>
-											by <strong>David Palmer</strong>, Jan 4th 2020
-										</small>
-									</div>
-								</li>
-								<li className="li_grid">
-									<div className="otherNews_recent_image"></div>
-									<div>
-										<h4>Here it goes the title</h4>
-										<small>
-											by <strong>David Palmer</strong>, Jan 4th 2020
-										</small>
-									</div>
-								</li>
+								<SmallNew
+									article={this.state.newArticles}
+									convertDate={this.convertDate}
+								/>
 							</ul>
 						</div>
 						<h3>CRYPTO MINING EVENTS</h3>
