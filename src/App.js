@@ -150,7 +150,6 @@ class App extends React.Component {
 		axios
 			.get('https://api.coinbase.com/v2/exchange-rates?currency=EUR')
 			.then(res => {
-				console.log(res.data.data.rates);
 				let rates = {
 					BTC: 1 / res.data.data.rates.BTC,
 					ETH: 1 / res.data.data.rates.ETH,
@@ -160,6 +159,18 @@ class App extends React.Component {
 					LTC: 1 / res.data.data.rates.LTC
 				};
 				this.setState({ rates });
+			});
+
+		axios
+			.get(
+				`http://api.coinlayer.com/${this.getPastDays(0)
+					.toString()
+					.substr(0, 10)}?access_key=${
+					process.env.REACT_APP_COINLAYER_KEY
+				}&target=EUR&symbols=BTC,ETH`
+			)
+			.then(res => {
+				console.log(res.data);
 			});
 	}
 
