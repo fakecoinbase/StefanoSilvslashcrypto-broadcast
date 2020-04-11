@@ -36,10 +36,17 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	overflow-y: scroll;
+	position: relative;
 }
 
 .secondaryNews > h3 {
 	margin-top: 0;
+}
+
+.secondaryNews > small {
+	position: absolute;
+	bottom: 5%;
+	left: 5%;
 }
 
 /* The grid for the second part of the page */
