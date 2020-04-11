@@ -32,7 +32,15 @@ class App extends React.Component {
 				description: ''
 			}
 		],
-		pics: []
+		pics: [],
+		rates: {
+			BTC: '',
+			ETH: '',
+			XRP: '',
+			BCH: '',
+			EOS: '',
+			LTC: ''
+		}
 	};
 
 	convertDate = x => {
@@ -87,7 +95,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR ripple OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				let recentArticles = res.data.articles;
@@ -101,7 +109,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					13
 				)}&to=${this.getPastDays(
 					6
@@ -118,9 +126,10 @@ class App extends React.Component {
 				});
 				this.setState({ oldArticles });
 			});
+
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					3
 				)}&from=${this.getPastDays(
 					0
@@ -136,6 +145,21 @@ class App extends React.Component {
 						: this.pickRandomImage(images.randomImg, 1)[0];
 				});
 				this.setState({ popularArticles });
+			});
+
+		axios
+			.get('https://api.coinbase.com/v2/exchange-rates?currency=EUR')
+			.then(res => {
+				console.log(res.data.data.rates);
+				let rates = {
+					BTC: 1 / res.data.data.rates.BTC,
+					ETH: 1 / res.data.data.rates.ETH,
+					XRP: 1 / res.data.data.rates.XRP,
+					BCH: 1 / res.data.data.rates.BCH,
+					EOS: 1 / res.data.data.rates.EOS,
+					LTC: 1 / res.data.data.rates.LTC
+				};
+				this.setState({ rates });
 			});
 	}
 
@@ -207,12 +231,12 @@ class App extends React.Component {
 					</div>
 					<div className="second_grid_third_column">
 						<ul className="conversions">
-							<li>1 BTC = $13.2232</li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
-							<li></li>
+							<li>1 BTC = {this.state.rates.BTC} €</li>
+							<li>1 ETH = {this.state.rates.ETH} €</li>
+							<li>1 BCH = {this.state.rates.BCH} €</li>
+							<li>1 LTC = {this.state.rates.LTC} €</li>
+							<li>1 XRP = {this.state.rates.XRP} €</li>
+							<li>1 EOS = {this.state.rates.EOS} €</li>
 						</ul>
 						<h3>POPULAR NEWS</h3>
 						<ul className="otherNews_recent">
