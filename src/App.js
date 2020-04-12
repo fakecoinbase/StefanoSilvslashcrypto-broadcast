@@ -100,6 +100,10 @@ class App extends React.Component {
 			.then(res => {
 				let recentArticles = res.data.articles;
 				recentArticles.forEach(article => {
+					article.title =
+						article.title.length < 130
+							? article.title
+							: article.title.substr(0, 130).concat('...');
 					article.urlToImage = article.urlToImage
 						? article.urlToImage
 						: this.pickRandomImage(images.randomImg, 1)[0];
@@ -120,6 +124,10 @@ class App extends React.Component {
 			.then(res => {
 				let oldArticles = res.data.articles;
 				oldArticles.forEach(article => {
+					article.title =
+						article.title.length < 130
+							? article.title
+							: article.title.substr(0, 130).concat('...');
 					article.urlToImage = article.urlToImage
 						? article.urlToImage
 						: this.pickRandomImage(images.randomImg, 1)[0];
@@ -140,6 +148,10 @@ class App extends React.Component {
 			.then(res => {
 				let popularArticles = res.data.articles;
 				popularArticles.forEach(article => {
+					article.title =
+						article.title.length < 130
+							? article.title
+							: article.title.substr(0, 130).concat('...');
 					article.urlToImage = article.urlToImage
 						? article.urlToImage
 						: this.pickRandomImage(images.randomImg, 1)[0];
