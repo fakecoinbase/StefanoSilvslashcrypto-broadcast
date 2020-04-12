@@ -2,6 +2,7 @@ import React from 'react';
 import SmallNew from './components/SmallNew.js';
 import BigNew from './components/BigNew.js';
 import TopNew from './components/TopNew.js';
+import ApexChart from './components/Graph.js';
 import images from './images';
 import './App.css';
 import axios from 'axios';
@@ -87,6 +88,7 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
+		console.log(ApexChart);
 		this.setState({
 			pics: this.pickRandomImage(images.mainImg, 5)
 		});
@@ -95,7 +97,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				let recentArticles = res.data.articles;
@@ -117,7 +119,7 @@ class App extends React.Component {
 					13
 				)}&to=${this.getPastDays(
 					6
-				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
 					process.env.REACT_APP_API_KEY
 				}`
 			)
@@ -150,7 +152,7 @@ class App extends React.Component {
 					3
 				)}&from=${this.getPastDays(
 					0
-				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=9&language=en&sortBy=popularity&apiKey=${
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=9&language=en&sortBy=popularity&apiKey=${
 					process.env.REACT_APP_API_KEY
 				}`
 			)
@@ -201,7 +203,9 @@ class App extends React.Component {
 				<div className="topbar"></div>
 
 				<div className="first-grid">
-					<div className="mainNews"></div>
+					<div className="mainNews">
+						<ApexChart />
+					</div>
 					{this.state.popularArticles.slice(0, 5).map((article, x) => {
 						return (
 							<TopNew
