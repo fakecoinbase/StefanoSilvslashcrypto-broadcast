@@ -26,6 +26,14 @@
 .mainNews {
 	grid-column: 1 / 3;
 	grid-row: 1 / 3;
+	display: grid;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.graph {
+	width: auto;
+	margin: 0 auto;
 }
 
 .secondaryNews {

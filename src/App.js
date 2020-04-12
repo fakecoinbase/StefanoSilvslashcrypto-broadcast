@@ -184,17 +184,17 @@ class App extends React.Component {
 				this.setState({ rates });
 			});
 
-		axios
-			.get(
-				`http://api.coinlayer.com/${this.getPastDays(0)
-					.toString()
-					.substr(0, 10)}?access_key=${
-					process.env.REACT_APP_COINLAYER_KEY
-				}&target=EUR&symbols=BTC,ETH`
-			)
-			.then(res => {
-				console.log(res.data);
-			});
+		// axios
+		// 	.get(
+		// 		`http://api.coinlayer.com/${this.getPastDays(0)
+		// 			.toString()
+		// 			.substr(0, 10)}?access_key=${
+		// 			process.env.REACT_APP_COINLAYER_KEY
+		// 		}&target=EUR&symbols=BTC,ETH`
+		// 	)
+		// 	.then(res => {
+		// 		console.log(res.data);
+		// 	});
 	}
 
 	render() {
@@ -267,12 +267,12 @@ class App extends React.Component {
 					</div>
 					<div className="second_grid_third_column">
 						<ul className="conversions">
-							<li>1 BTC = {this.state.rates.BTC} €</li>
-							<li>1 ETH = {this.state.rates.ETH} €</li>
-							<li>1 BCH = {this.state.rates.BCH} €</li>
-							<li>1 LTC = {this.state.rates.LTC} €</li>
-							<li>1 XRP = {this.state.rates.XRP} €</li>
-							<li>1 EOS = {this.state.rates.EOS} €</li>
+							<li>1 BTC = {Number(this.state.rates.BTC).toFixed(4)} €</li>
+							<li>1 ETH = {Number(this.state.rates.ETH).toFixed(4)} €</li>
+							<li>1 BCH = {Number(this.state.rates.BCH).toFixed(4)} €</li>
+							<li>1 LTC = {Number(this.state.rates.LTC).toFixed(4)} €</li>
+							<li>1 XRP = {Number(this.state.rates.XRP).toFixed(4)} €</li>
+							<li>1 EOS = {Number(this.state.rates.EOS).toFixed(4)} €</li>
 						</ul>
 						<h3>POPULAR NEWS</h3>
 						<ul className="otherNews_recent">
