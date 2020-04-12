@@ -10,6 +10,9 @@ class ApexChart extends Component {
 				chart: {
 					id: 'basic-bar'
 				},
+				stroke: {
+					curve: 'smooth'
+				},
 				xaxis: {
 					categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
 				}
@@ -31,7 +34,7 @@ class ApexChart extends Component {
 						<Chart
 							options={this.state.options}
 							series={this.state.series}
-							type="bar"
+							type="area"
 							width="500"
 						/>
 					</div>
