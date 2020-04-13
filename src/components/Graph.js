@@ -10,8 +10,15 @@ class ApexChart extends Component {
 			stroke: {
 				curve: 'smooth'
 			},
+
 			xaxis: {
-				categories: []
+				categories: [],
+				tickPlacement: 'on'
+			},
+			grid: {
+				padding: {
+					right: 30
+				}
 			}
 		},
 		series: [
@@ -27,19 +34,26 @@ class ApexChart extends Component {
 		series[0].data = props.rates;
 		let xaxis = {};
 		xaxis.categories = props.dates.map(date => Number(date.substr(0, 2)));
-		console.log(xaxis);
 		this.setState({ series });
 		this.setState({ xaxis });
+	}
+
+	assignBackgroundColor() {
+		let variation =
+			((this.state.series[0].data[this.state.series[0].data.length - 1] -
+				this.state.series[0].data[this.state.series[0].data.length - 2]) /
+				this.state.series[0].data[this.state.series[0].data.length - 2]) *
+			100;
+		if (variation > 0) {
+			return 'green';
+		} else if (variation < 0) {
+			return 'red';
+		}
 	}
 
 	render() {
 		return (
 			<div className="mainNews">
-				<div>
-					<h3>Bitcoin</h3>
-					<h4>Price</h4>
-					<h5>Variation</h5>
-				</div>
 				<div className="graph">
 					<div className="row">
 						<div className="mixed-chart">
@@ -51,6 +65,36 @@ class ApexChart extends Component {
 							/>
 						</div>
 					</div>
+				</div>
+				<div className="crypto-status">
+					<h2>Bitcoin</h2>
+					<h2>BTC</h2>
+					<h3>
+						{this.state.series[0].data[this.state.series[0].data.length - 1]}€
+					</h3>
+					<h4
+						className={
+							this.assignBackgroundColor() == 'green'
+								? 'green'
+								: this.assignBackgroundColor() == 'red'
+								? 'red'
+								: null
+						}
+					>
+						{(
+							((this.state.series[0].data[
+								this.state.series[0].data.length - 1
+							] -
+								this.state.series[0].data[
+									this.state.series[0].data.length - 2
+								]) /
+								this.state.series[0].data[
+									this.state.series[0].data.length - 2
+								]) *
+							100
+						).toFixed(2)}{' '}
+						%
+					</h4>
 				</div>
 			</div>
 		);
