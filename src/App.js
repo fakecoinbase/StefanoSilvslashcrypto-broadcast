@@ -175,19 +175,6 @@ class App extends React.Component {
 				this.setState({ popularArticles });
 			});
 
-		axios
-			.get('https://api.coinbase.com/v2/exchange-rates?currency=EUR')
-			.then(res => {
-				let rates = {
-					BTC: 1 / res.data.data.rates.BTC,
-					ETH: 1 / res.data.data.rates.ETH,
-					XRP: 1 / res.data.data.rates.XRP,
-					BCH: 1 / res.data.data.rates.BCH,
-					EOS: 1 / res.data.data.rates.EOS,
-					LTC: 1 / res.data.data.rates.LTC
-				};
-				this.setState({ rates });
-			});
 		let sortedData = [];
 		let series = [];
 		series.dates = [];
@@ -199,7 +186,7 @@ class App extends React.Component {
 						.toString()
 						.substr(0, 10)}?access_key=${
 						process.env.REACT_APP_COINLAYER_KEY
-					}&target=EUR&symbols=BTC,ETH`
+					}&target=EUR&symbols=BTC,ETH,XRP,BCH,EOS,LTC`
 				)
 				.then(res => {
 					sortedData.push(res.data);
@@ -212,6 +199,15 @@ class App extends React.Component {
 					series.rates = sortedData.map(serie => serie.rates);
 					console.log(series);
 					this.setState({ series });
+					let rates = {
+						BTC: series.rates[series.rates.length - 1].BTC,
+						ETH: series.rates[series.rates.length - 1].ETH,
+						XRP: series.rates[series.rates.length - 1].XRP,
+						BCH: series.rates[series.rates.length - 1].BCH,
+						EOS: series.rates[series.rates.length - 1].EOS,
+						LTC: series.rates[series.rates.length - 1].LTC
+					};
+					this.setState({ rates });
 				});
 		}
 	}
