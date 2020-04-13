@@ -11,13 +11,11 @@ class ApexChart extends Component {
 				curve: 'smooth'
 			},
 
-			xaxis: {
-				categories: [],
-				tickPlacement: 'on'
-			},
+			labels: [],
 			grid: {
 				padding: {
-					right: 30
+					right: 30,
+					left: 30
 				}
 			}
 		},
@@ -32,10 +30,10 @@ class ApexChart extends Component {
 	componentWillReceiveProps(props) {
 		let series = [{}];
 		series[0].data = props.rates;
-		let xaxis = {};
-		xaxis.categories = props.dates.map(date => Number(date.substr(0, 2)));
+		let labels = [];
+		labels = props.dates;
 		this.setState({ series });
-		this.setState({ xaxis });
+		this.setState({ options: { labels } });
 	}
 
 	assignBackgroundColor() {

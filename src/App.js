@@ -102,7 +102,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=wordpress.com,foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=wordpress.com,foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR (nxt AND crypto) OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				let recentArticles = res.data.articles;
@@ -124,7 +124,7 @@ class App extends React.Component {
 					13
 				)}&to=${this.getPastDays(
 					6
-				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR (nxt AND crypto) OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=6&language=en&sortBy=popularity&apiKey=${
 					process.env.REACT_APP_API_KEY
 				}`
 			)
@@ -157,7 +157,7 @@ class App extends React.Component {
 					3
 				)}&from=${this.getPastDays(
 					0
-				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=9&language=en&sortBy=popularity&apiKey=${
+				)}&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR (nxt AND crypto) OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=9&language=en&sortBy=popularity&apiKey=${
 					process.env.REACT_APP_API_KEY
 				}`
 			)
@@ -188,7 +188,8 @@ class App extends React.Component {
 				};
 				this.setState({ rates });
 			});
-		let series = {};
+		let sortedData = [];
+		let series = [];
 		series.dates = [];
 		series.rates = [];
 		for (let i = 0; i < 7; i++) {
@@ -201,8 +202,15 @@ class App extends React.Component {
 					}&target=EUR&symbols=BTC,ETH`
 				)
 				.then(res => {
-					series.dates.unshift(this.convertDate(res.data.date).substr(0, 6));
-					series.rates.unshift(res.data.rates);
+					sortedData.push(res.data);
+					sortedData = sortedData.sort(
+						(a, b) => new Date(a.date) - new Date(b.date)
+					);
+					series.dates = sortedData.map(serie =>
+						this.convertDate(serie.date).substr(0, 6)
+					);
+					series.rates = sortedData.map(serie => serie.rates);
+					console.log(series);
 					this.setState({ series });
 				});
 		}
