@@ -41,10 +41,14 @@ class App extends React.Component {
 			BCH: '',
 			EOS: '',
 			LTC: ''
+		},
+		series: {
+			dates: [],
+			rates: []
 		}
 	};
 
-	convertDate = x => {
+	convertDate = date => {
 		const monthNames = [
 			'January',
 			'February',
@@ -60,20 +64,22 @@ class App extends React.Component {
 			'December'
 		];
 		let dateFormatted;
-		if (x) {
+		if (date) {
 			let month =
-				x.substr(5, 2)[0] == 0
-					? monthNames[x.substr(6, 1)[0] - 1]
-					: monthNames[x.substr(5, 2) - 1];
-			dateFormatted = `${x.substr(8, 2)} ${month} ${x.substr(0, 4)}`;
+				date.substr(5, 2)[0] == 0
+					? monthNames[date.substr(6, 1)[0] - 1]
+					: monthNames[date.substr(5, 2) - 1];
+			dateFormatted = `${date.substr(8, 2)} ${month} ${date.substr(0, 4)}`;
 		}
 
 		return dateFormatted;
 	};
 
-	getPastDays = x => {
+	getPastDays = number => {
 		let date = new Date();
-		let pastDate = new Date(date.setDate(date.getDate() - x)).toISOString();
+		let pastDate = new Date(
+			date.setDate(date.getDate() - number)
+		).toISOString();
 		return pastDate;
 	};
 
@@ -88,7 +94,6 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log(ApexChart);
 		this.setState({
 			pics: this.pickRandomImage(images.mainImg, 5)
 		});
@@ -183,18 +188,24 @@ class App extends React.Component {
 				};
 				this.setState({ rates });
 			});
-
-		// axios
-		// 	.get(
-		// 		`http://api.coinlayer.com/${this.getPastDays(0)
-		// 			.toString()
-		// 			.substr(0, 10)}?access_key=${
-		// 			process.env.REACT_APP_COINLAYER_KEY
-		// 		}&target=EUR&symbols=BTC,ETH`
-		// 	)
-		// 	.then(res => {
-		// 		console.log(res.data);
-		// 	});
+		let series = {};
+		series.dates = [];
+		series.rates = [];
+		for (let i = 0; i < 7; i++) {
+			axios
+				.get(
+					`http://api.coinlayer.com/${this.getPastDays(i)
+						.toString()
+						.substr(0, 10)}?access_key=${
+						process.env.REACT_APP_COINLAYER_KEY
+					}&target=EUR&symbols=BTC,ETH`
+				)
+				.then(res => {
+					series.dates.unshift(this.convertDate(res.data.date).substr(0, 6));
+					series.rates.unshift(res.data.rates);
+					this.setState({ series });
+				});
+		}
 	}
 
 	render() {
@@ -205,7 +216,12 @@ class App extends React.Component {
 				</div>
 
 				<div className="first-grid">
-					<ApexChart />
+					<ApexChart
+						dates={this.state.series.dates}
+						rates={this.state.series.rates.map(rate =>
+							Number(rate.BTC).toFixed(2)
+						)}
+					/>
 					{this.state.popularArticles.slice(0, 5).map((article, x) => {
 						return (
 							<TopNew

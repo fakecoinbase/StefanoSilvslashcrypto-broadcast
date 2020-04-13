@@ -2,28 +2,34 @@ import React, { Component } from 'react';
 import Chart from 'react-apexcharts';
 
 class ApexChart extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			options: {
-				chart: {
-					id: 'basic-bar'
-				},
-				stroke: {
-					curve: 'smooth'
-				},
-				xaxis: {
-					categories: [1992, 1993, 1994, 1995, 1996, 1997, 1998]
-				}
+	state = {
+		options: {
+			chart: {
+				id: 'basic-bar'
 			},
-			series: [
-				{
-					name: 'series-1',
-					data: [40, 45, 50, 49, 60, 70, 91]
-				}
-			]
-		};
+			stroke: {
+				curve: 'smooth'
+			},
+			xaxis: {
+				categories: []
+			}
+		},
+		series: [
+			{
+				name: 'series-1',
+				data: []
+			}
+		]
+	};
+
+	componentWillReceiveProps(props) {
+		let series = [{}];
+		series[0].data = props.rates;
+		let xaxis = {};
+		xaxis.categories = props.dates.map(date => Number(date.substr(0, 2)));
+		console.log(xaxis);
+		this.setState({ series });
+		this.setState({ xaxis });
 	}
 
 	render() {
