@@ -97,7 +97,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				let recentArticles = res.data.articles;
@@ -115,7 +115,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					13
 				)}&to=${this.getPastDays(
 					6
@@ -148,7 +148,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					3
 				)}&from=${this.getPastDays(
 					0
@@ -200,7 +200,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<div className="topbar"></div>
+				<div className="topbar">
+					<div className="logo"></div>
+				</div>
 
 				<div className="first-grid">
 					<div className="mainNews">

@@ -6,17 +6,22 @@
 }
 
 .topbar {
-	position: fixed;
-	top: 0;
-	left: 0;
 	height: 100px;
-	margin: inherit;
-	width: calc(100% - 16%);
+	margin: 0 -8%;
+	padding-top: 10px;
+}
+
+.logo {
+	background-image: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1586719506/cryptocurrencies/logo_szm6ak.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 300px;
+	height: inherit;
 }
 
 /* The first grid with the most popular news */
 .first-grid {
-	padding-top: 100px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 150px 150px 150px;
@@ -42,7 +47,6 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	overflow-y: scroll;
 	position: relative;
 }
 
