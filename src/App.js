@@ -205,9 +205,7 @@ class App extends React.Component {
 				</div>
 
 				<div className="first-grid">
-					<div className="mainNews">
-						<ApexChart />
-					</div>
+					<ApexChart />
 					{this.state.popularArticles.slice(0, 5).map((article, x) => {
 						return (
 							<TopNew

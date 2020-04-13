@@ -28,15 +28,22 @@ class ApexChart extends Component {
 
 	render() {
 		return (
-			<div className="graph">
-				<div className="row">
-					<div className="mixed-chart">
-						<Chart
-							options={this.state.options}
-							series={this.state.series}
-							type="area"
-							width="500"
-						/>
+			<div className="mainNews">
+				<div>
+					<h3>Bitcoin</h3>
+					<h4>Price</h4>
+					<h5>Variation</h5>
+				</div>
+				<div className="graph">
+					<div className="row">
+						<div className="mixed-chart">
+							<Chart
+								options={this.state.options}
+								series={this.state.series}
+								type="area"
+								width="500"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
