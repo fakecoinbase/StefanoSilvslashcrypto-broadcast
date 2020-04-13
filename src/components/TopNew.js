@@ -32,9 +32,11 @@ class TopNew extends React.Component {
 	}
 	render() {
 		return (
-			<div
+			<a
 				className="secondaryNews"
 				style={{ backgroundImage: `url(${this.state.image})` }}
+				href={this.state.article.url}
+				target="_blank"
 			>
 				<h3>{this.state.article.title}</h3>
 				<small>
@@ -44,7 +46,7 @@ class TopNew extends React.Component {
 						? this.state.article.source.name
 						: this.state.article.author}
 				</small>
-			</div>
+			</a>
 		);
 	}
 }

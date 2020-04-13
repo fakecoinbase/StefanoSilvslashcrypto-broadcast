@@ -25,7 +25,11 @@ class BigNew extends React.Component {
 	}
 	render() {
 		return (
-			<div className="mainNews_recent">
+			<a
+				className="mainNews_recent"
+				href={this.state.article.url}
+				target="_blank"
+			>
 				<div
 					className="mainNews_recent_img"
 					style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
@@ -43,7 +47,7 @@ class BigNew extends React.Component {
 					</small>
 					<p>{this.state.article.description}</p>
 				</div>
-			</div>
+			</a>
 		);
 	}
 }

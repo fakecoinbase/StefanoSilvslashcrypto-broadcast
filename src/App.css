@@ -114,6 +114,8 @@
 .mainNews_recent {
 	display: grid;
 	grid-template-rows: 2fr 3fr;
+	color: black;
+	text-decoration: none;
 }
 
 .mainNews_recent_img {
@@ -161,24 +163,26 @@
 }
 
 /* The grid inside the recent news */
-.li_grid {
+.li_grid > a {
 	display: grid;
 	grid-template-columns: 2fr 3fr;
+	text-decoration: none;
+	color: black;
 }
 
-.li_grid > div > h4 {
+.li_grid > a > div > h4 {
 	margin: 0;
 	padding-bottom: 5%;
 }
 
-.li_grid > div {
+.li_grid > a > div {
 	padding-left: 5%;
 }
 
-.li_grid > div > small {
+.li_grid > a > div > small {
 	color: rgb(148, 148, 148);
 }
 
-.li_grid > div > small > strong {
+.li_grid > a > div > small > strong {
 	color: black;
 }

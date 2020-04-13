@@ -97,7 +97,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+				`https://newsapi.org/v2/everything?excludeDomains=wordpress.com,foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&qInTitle=(crypto OR bitcoin OR litecoin OR etherium OR (ripple AND crypto) OR namecoin OR peercoin OR dogecoin OR gridecoin OR primecoin OR nxt OR auroracoin OR mazacoin OR monero OR (stellar AND crypto) OR nem OR potcoin OR titcoin OR vertcoin OR teter OR zcash OR eos.io)&page=1&pageSize=5&language=en&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
 			)
 			.then(res => {
 				let recentArticles = res.data.articles;
@@ -115,7 +115,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=wordpress.com,foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					13
 				)}&to=${this.getPastDays(
 					6
@@ -148,7 +148,7 @@ class App extends React.Component {
 
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?excludeDomains=foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
+				`https://newsapi.org/v2/everything?excludeDomains=wordpress.com,foxsports.com,comicbook.com,slashdot.org,bleacherreport.com,nyt.com,people.com,doctorofcredit.com&from=${this.getPastDays(
 					3
 				)}&from=${this.getPastDays(
 					0
@@ -224,7 +224,11 @@ class App extends React.Component {
 					<div>
 						<h3>RECENT NEWS</h3>
 						<div className="grid_recent">
-							<div className="mainNews_recent">
+							<a
+								href={this.state.recentArticles[0].url}
+								target="_blank"
+								className="mainNews_recent"
+							>
 								<div
 									className="mainNews_recent_img"
 									style={{
@@ -239,7 +243,7 @@ class App extends React.Component {
 									</small>
 									<p>{this.state.recentArticles[0].description}</p>
 								</div>
-							</div>
+							</a>
 							<ul className="otherNews_recent">
 								{this.state.recentArticles
 									.slice(1, this.state.recentArticles.length)
