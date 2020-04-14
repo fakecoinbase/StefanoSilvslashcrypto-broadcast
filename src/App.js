@@ -233,7 +233,7 @@ class App extends React.Component {
 
 				<div className="first-grid">
 					<div className="slider">
-						<Slider>
+						<Slider hasBullets auto="5000">
 							<ApexChart
 								dates={this.state.series.dates}
 								rates={this.state.series.rates.map(rate =>
