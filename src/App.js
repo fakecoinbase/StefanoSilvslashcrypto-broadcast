@@ -172,9 +172,9 @@ class App extends React.Component {
 				let popularArticles = res.data.articles;
 				popularArticles.forEach(article => {
 					article.title =
-						article.title.length < 130
+						article.title.length < 100
 							? article.title
-							: article.title.substr(0, 130).concat('...');
+							: article.title.substr(0, 100).concat('...');
 					article.urlToImage = article.urlToImage
 						? article.urlToImage
 						: this.pickRandomImage(images.randomImg, 1)[0];
@@ -186,7 +186,7 @@ class App extends React.Component {
 			});
 
 		let sortedData = [];
-		let series = [];
+		let series = {};
 		series.dates = [];
 		series.rates = [];
 		for (let i = 0; i < 7; i++) {
@@ -208,6 +208,7 @@ class App extends React.Component {
 					);
 					series.rates = sortedData.map(serie => serie.rates);
 					this.setState({ series });
+					console.log(series);
 					let rates = {
 						BTC: series.rates[series.rates.length - 1].BTC,
 						ETH: series.rates[series.rates.length - 1].ETH,
@@ -239,12 +240,48 @@ class App extends React.Component {
 								rates={this.state.series.rates.map(rate =>
 									Number(rate.BTC).toFixed(2)
 								)}
+								nameShort="BTC"
+								nameLong="Bitcoin"
 							/>
 							<ApexChart
 								dates={this.state.series.dates}
 								rates={this.state.series.rates.map(rate =>
-									Number(rate.BTC).toFixed(2)
+									Number(rate.ETH).toFixed(3)
 								)}
+								nameShort="ETH"
+								nameLong="Etherium"
+							/>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.BCH).toFixed(3)
+								)}
+								nameShort="BCH"
+								nameLong="BTC Cash"
+							/>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.LTC).toFixed(4)
+								)}
+								nameShort="LTC"
+								nameLong="Litecoin"
+							/>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.EOS).toFixed(5)
+								)}
+								nameShort="EOS"
+								nameLong="EOS"
+							/>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.XRP).toFixed(5)
+								)}
+								nameShort="XRP"
+								nameLong="Ripple"
 							/>
 						</Slider>
 					</div>

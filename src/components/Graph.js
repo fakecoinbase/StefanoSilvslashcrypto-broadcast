@@ -24,7 +24,8 @@ class ApexChart extends Component {
 				name: 'series-1',
 				data: []
 			}
-		]
+		],
+		name: {}
 	};
 
 	componentWillReceiveProps(props) {
@@ -34,6 +35,11 @@ class ApexChart extends Component {
 		labels = props.dates;
 		this.setState({ series });
 		this.setState({ options: { labels } });
+		let name = {};
+		console.log(props.nameShort);
+		name.long = props.nameLong;
+		name.short = props.nameShort;
+		this.setState({ name });
 	}
 
 	assignBackgroundColor() {
@@ -64,7 +70,8 @@ class ApexChart extends Component {
 					</div>
 				</div>
 				<div className="crypto-status">
-					<h2>Bitcoin</h2> <small>BTC</small>
+					<h2>{this.state.name.long}</h2>
+					<small>{this.state.name.short}</small>
 					<small>PRICE</small>
 					<h3>
 						{this.state.series[0].data[this.state.series[0].data.length - 1]}€
