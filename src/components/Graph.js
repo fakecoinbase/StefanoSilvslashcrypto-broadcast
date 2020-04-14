@@ -36,7 +36,6 @@ class ApexChart extends Component {
 		this.setState({ series });
 		this.setState({ options: { labels } });
 		let name = {};
-		console.log(props.nameShort);
 		name.long = props.nameLong;
 		name.short = props.nameShort;
 		this.setState({ name });
@@ -70,7 +69,7 @@ class ApexChart extends Component {
 					</div>
 				</div>
 				<div className="crypto-status">
-					<h2>{this.state.name.long}</h2>
+					<h2>{this.state.name.long} </h2>
 					<small>{this.state.name.short}</small>
 					<small>PRICE</small>
 					<h3>

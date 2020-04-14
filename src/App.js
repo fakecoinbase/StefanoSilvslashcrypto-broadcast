@@ -208,7 +208,6 @@ class App extends React.Component {
 					);
 					series.rates = sortedData.map(serie => serie.rates);
 					this.setState({ series });
-					console.log(series);
 					let rates = {
 						BTC: series.rates[series.rates.length - 1].BTC,
 						ETH: series.rates[series.rates.length - 1].ETH,
@@ -321,7 +320,7 @@ class App extends React.Component {
 									<p>{this.state.recentArticles[0].description}</p>
 								</div>
 							</a>
-							<ul className="otherNews_recent">
+							<ul className="otherNews_recent center">
 								{this.state.recentArticles
 									.slice(1, this.state.recentArticles.length)
 									.map((article, index) => {
