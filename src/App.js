@@ -3,6 +3,7 @@ import SmallNew from './components/SmallNew.js';
 import BigNew from './components/BigNew.js';
 import TopNew from './components/TopNew.js';
 import ApexChart from './components/Graph.js';
+import Slider from '@farbenmeer/react-spring-slider';
 import images from './images';
 import './App.css';
 import axios from 'axios';
@@ -116,6 +117,9 @@ class App extends React.Component {
 						: this.pickRandomImage(images.randomImg, 1)[0];
 				});
 				this.setState({ recentArticles });
+			})
+			.catch(err => {
+				console.log({ err });
 			});
 
 		axios
@@ -149,6 +153,9 @@ class App extends React.Component {
 					}
 				});
 				this.setState({ oldArticles });
+			})
+			.catch(err => {
+				console.log({ err });
 			});
 
 		axios
@@ -173,6 +180,9 @@ class App extends React.Component {
 						: this.pickRandomImage(images.randomImg, 1)[0];
 				});
 				this.setState({ popularArticles });
+			})
+			.catch(err => {
+				console.log({ err });
 			});
 
 		let sortedData = [];
@@ -197,7 +207,6 @@ class App extends React.Component {
 						this.convertDate(serie.date).substr(0, 6)
 					);
 					series.rates = sortedData.map(serie => serie.rates);
-					console.log(series);
 					this.setState({ series });
 					let rates = {
 						BTC: series.rates[series.rates.length - 1].BTC,
@@ -208,6 +217,9 @@ class App extends React.Component {
 						LTC: series.rates[series.rates.length - 1].LTC
 					};
 					this.setState({ rates });
+				})
+				.catch(err => {
+					console.log({ err });
 				});
 		}
 	}
@@ -220,12 +232,22 @@ class App extends React.Component {
 				</div>
 
 				<div className="first-grid">
-					<ApexChart
-						dates={this.state.series.dates}
-						rates={this.state.series.rates.map(rate =>
-							Number(rate.BTC).toFixed(2)
-						)}
-					/>
+					<div className="slider">
+						<Slider>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.BTC).toFixed(2)
+								)}
+							/>
+							<ApexChart
+								dates={this.state.series.dates}
+								rates={this.state.series.rates.map(rate =>
+									Number(rate.BTC).toFixed(2)
+								)}
+							/>
+						</Slider>
+					</div>
 					{this.state.popularArticles.slice(0, 5).map((article, x) => {
 						return (
 							<TopNew

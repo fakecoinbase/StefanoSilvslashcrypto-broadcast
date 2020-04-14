@@ -29,11 +29,13 @@
 }
 
 .mainNews {
-	grid-column: 1 / 3;
-	grid-row: 1 / 3;
-	display: grid;
 	display: grid;
 	grid-template-columns: 3fr 1fr;
+}
+
+.slider {
+	grid-column: 1 / 3;
+	grid-row: 1 / 3;
 }
 
 .graph {
