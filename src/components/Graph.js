@@ -59,17 +59,17 @@ class ApexChart extends Component {
 								options={this.state.options}
 								series={this.state.series}
 								type="area"
-								width="500"
 							/>
 						</div>
 					</div>
 				</div>
 				<div className="crypto-status">
-					<h2>Bitcoin</h2>
-					<h2>BTC</h2>
+					<h2>Bitcoin</h2> <small>BTC</small>
+					<small>PRICE</small>
 					<h3>
 						{this.state.series[0].data[this.state.series[0].data.length - 1]}€
 					</h3>
+					<small className="h24change">24 HOUR % CHANGE</small>
 					<h4
 						className={
 							this.assignBackgroundColor() == 'green'
