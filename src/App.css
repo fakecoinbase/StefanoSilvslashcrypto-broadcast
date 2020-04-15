@@ -267,6 +267,18 @@ ul.cfMAPe {
 	}
 }
 
+.bottombar {
+	display: grid;
+	height: 150px;
+	grid-template-columns: 1fr 1fr;
+}
+
+.bottombar > div {
+	width: 100%;
+	text-align: center;
+	padding-top: 70px;
+}
+
 @media (max-width: 800px) {
 	.App {
 		margin: 0 1%;
