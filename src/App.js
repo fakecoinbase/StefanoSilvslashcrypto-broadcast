@@ -7,6 +7,7 @@ import Slider from '@farbenmeer/react-spring-slider';
 import images from './images';
 import './App.css';
 import axios from 'axios';
+import jsonp from 'jsonp';
 
 class App extends React.Component {
 	state = {
@@ -190,16 +191,15 @@ class App extends React.Component {
 		series.dates = [];
 		series.rates = [];
 		for (let i = 0; i < 7; i++) {
-			axios
-				.get(
-					`http://api.coinlayer.com/${this.getPastDays(i)
-						.toString()
-						.substr(0, 10)}?access_key=${
-						process.env.REACT_APP_COINLAYER_KEY
-					}&target=EUR&symbols=BTC,ETH,XRP,BCH,EOS,LTC`
-				)
-				.then(res => {
-					sortedData.push(res.data);
+			jsonp(
+				`http://api.coinlayer.com/${this.getPastDays(i)
+					.toString()
+					.substr(0, 10)}?access_key=${
+					process.env.REACT_APP_COINLAYER_KEY
+				}&target=EUR&symbols=BTC,ETH,XRP,BCH,EOS,LTC&callback=result`,
+				null,
+				(err, res) => {
+					sortedData.push(res);
 					sortedData = sortedData.sort(
 						(a, b) => new Date(a.date) - new Date(b.date)
 					);
@@ -217,10 +217,8 @@ class App extends React.Component {
 						LTC: series.rates[series.rates.length - 1].LTC
 					};
 					this.setState({ rates });
-				})
-				.catch(err => {
-					console.log({ err });
-				});
+				}
+			);
 		}
 	}
 
