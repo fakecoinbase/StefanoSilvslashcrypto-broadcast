@@ -12,13 +12,13 @@ module.exports = {
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586534560/cryptocurrencies/images_se2uqn.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586534560/cryptocurrencies/images_2_fqhilu.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586534560/cryptocurrencies/images_1_cycx5t.jpg',
-		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586534560/cryptocurrencies/images_kedvaa.png'
+		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586534560/cryptocurrencies/images_kedvaa.png',
+		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533746/cryptocurrencies/images_4_xhfmcc.jpg'
 	],
 	mainImg: [
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533755/cryptocurrencies/images_1_o6sd33.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533750/cryptocurrencies/images_fhvsvd.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533750/cryptocurrencies/images_2_syi8wx.jpg',
-		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533746/cryptocurrencies/images_4_xhfmcc.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533745/cryptocurrencies/images_6_esojqo.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533742/cryptocurrencies/images_3_vqpxvp.jpg',
 		'https://res.cloudinary.com/do8qdtgy8/image/upload/v1586533742/cryptocurrencies/images_9_gk7wbt.jpg',

@@ -75,30 +75,32 @@ class ApexChart extends Component {
 					<h3>
 						{this.state.series[0].data[this.state.series[0].data.length - 1]}€
 					</h3>
-					<small className="h24change">24 HOUR % CHANGE</small>
-					<h4
-						className={
-							this.assignBackgroundColor() == 'green'
-								? 'green'
-								: this.assignBackgroundColor() == 'red'
-								? 'red'
-								: null
-						}
-					>
-						{(
-							((this.state.series[0].data[
-								this.state.series[0].data.length - 1
-							] -
-								this.state.series[0].data[
-									this.state.series[0].data.length - 2
-								]) /
-								this.state.series[0].data[
-									this.state.series[0].data.length - 2
-								]) *
-							100
-						).toFixed(2)}{' '}
-						%
-					</h4>
+					<small className="h24change">
+						<small>24 HOUR % CHANGE</small>
+						<h4
+							className={
+								this.assignBackgroundColor() == 'green'
+									? 'green'
+									: this.assignBackgroundColor() == 'red'
+									? 'red'
+									: null
+							}
+						>
+							{(
+								((this.state.series[0].data[
+									this.state.series[0].data.length - 1
+								] -
+									this.state.series[0].data[
+										this.state.series[0].data.length - 2
+									]) /
+									this.state.series[0].data[
+										this.state.series[0].data.length - 2
+									]) *
+								100
+							).toFixed(2)}{' '}
+							%
+						</h4>
+					</small>
 				</div>
 			</div>
 		);

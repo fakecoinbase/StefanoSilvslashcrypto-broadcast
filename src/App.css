@@ -9,15 +9,20 @@
 	height: 100px;
 	margin: 0 -8%;
 	padding-top: 10px;
+	position: relative;
 }
 
 .logo {
-	background-image: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1586719506/cryptocurrencies/logo_szm6ak.png');
+	background-image: url('https://res.cloudinary.com/do8qdtgy8/image/upload/v1586940459/cryptocurrencies/logo_transparent_ofa4mr.png');
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
-	width: 300px;
+	background-size: contain;
 	height: inherit;
+	position: absolute;
+	left: 5%;
+	top: 5%;
+	height: 100px;
+	width: 100px;
 }
 
 /* The first grid with the most popular news */
@@ -52,7 +57,7 @@ ul.cfMAPe {
 	background-color: rgb(255, 190, 48);
 	color: black;
 }
-.crypto-status > h4 {
+.h24change > h4 {
 	text-align: center;
 	border-radius: 5px;
 }
@@ -342,6 +347,46 @@ ul.cfMAPe {
 }
 
 @media (max-width: 560px) {
+	.first-grid {
+		grid-template-columns: 1fr;
+		grid-template-rows: 450px 150px 150px 150px 150px 150px;
+	}
+	.mainNews {
+		grid-template-columns: 1fr;
+	}
+
+	.crypto-status > small:nth-child(3),
+	.crypto-status > small:nth-child(2),
+	.h24change {
+		display: inline;
+		padding: 0 2%;
+	}
+
+	.crypto-status > h2 {
+		font-size: 16px;
+	}
+
+	.crypto-status > h3 {
+		font-size: 14px;
+		margin-top: 0px;
+		display: inline;
+	}
+	.h24change > h4 {
+		font-size: 14px;
+		display: inline;
+		padding: 0 1%;
+		margin-left: 2%;
+	}
+
+	.secondaryNews {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.slider {
+		grid-column: auto;
+		grid-row: auto;
+	}
 	.second-grid > div > h3 {
 		height: auto;
 	}
@@ -361,5 +406,32 @@ ul.cfMAPe {
 	.otherNews_recent.center {
 		grid-template-columns: 1fr;
 		grid-gap: 0;
+	}
+}
+
+@media (max-width: 500px) {
+	.first-grid {
+		grid-template-rows: 400px 150px 150px 150px 150px 150px;
+	}
+}
+
+@media (max-width: 420px) {
+	.h24change {
+		display: block;
+		width: 150px;
+	}
+	.crypto-status {
+		padding: 8px;
+		width: auto;
+		margin: 0 15%;
+	}
+	.first-grid {
+		grid-template-rows: 350px 150px 150px 150px 150px 150px;
+	}
+}
+
+@media (max-width: 300px) {
+	.first-grid {
+		grid-template-rows: 290px 150px 150px 150px 150px 150px;
 	}
 }
