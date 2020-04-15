@@ -273,7 +273,7 @@ ul.cfMAPe {
 	grid-template-columns: 1fr 1fr;
 }
 
-.bottombar > div {
+.bottombar > a {
 	width: 100%;
 	text-align: center;
 	padding-top: 70px;

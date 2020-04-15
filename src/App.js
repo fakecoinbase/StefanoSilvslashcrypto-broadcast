@@ -373,8 +373,12 @@ class App extends React.Component {
 					</div>
 				</div>
 				<div className="bottombar">
-					<div>Developed by Stefano Silvestrini</div>
-					<div>Powered by News Api</div>
+					<a href="https://github.com/StefanoSilv" target="_blank">
+						Developed by Stefano Silvestrini
+					</a>
+					<a href="https://newsapi.org" target="_blank">
+						Powered by NewsAPI.org
+					</a>
 				</div>
 			</div>
 		);
