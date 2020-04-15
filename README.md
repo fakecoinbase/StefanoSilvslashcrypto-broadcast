@@ -4,7 +4,7 @@ React.js
 
 ## External Api
 News Api newsapi.org  
-Coinlayer coinlayer.com 
+Coinlayer coinlayer.com  
 ApexCharts apexcharts.com 
 
 ## Deployed
