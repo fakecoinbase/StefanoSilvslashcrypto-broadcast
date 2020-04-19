@@ -7,7 +7,6 @@ import Slider from '@farbenmeer/react-spring-slider';
 import images from './images';
 import './App.css';
 import axios from 'axios';
-import jsonp from 'jsonp';
 
 class App extends React.Component {
 	state = {
@@ -191,22 +190,25 @@ class App extends React.Component {
 		series.dates = [];
 		series.rates = [];
 		for (let i = 0; i < 7; i++) {
-			jsonp(
-				`http://api.coinlayer.com/${this.getPastDays(i)
+			axios(
+				`${process.env.REACT_APP_RATES_API}?date=${this.getPastDays(i)
 					.toString()
-					.substr(0, 10)}?access_key=${
-					process.env.REACT_APP_COINLAYER_KEY
-				}&target=EUR&symbols=BTC,ETH,XRP,BCH,EOS,LTC&callback=result`,
-				null,
-				(err, res) => {
-					sortedData.push(res);
+					.substr(0, 10)}`
+			).then(res => {
+				if (res.data.rate.length) {
+					res.data.rate[0].date = this.getPastDays(i)
+						.toString()
+						.substr(0, 10);
+
+					sortedData.push(res.data.rate[0]);
 					sortedData = sortedData.sort(
 						(a, b) => new Date(a.date) - new Date(b.date)
 					);
+
 					series.dates = sortedData.map(serie =>
 						this.convertDate(serie.date).substr(0, 6)
 					);
-					series.rates = sortedData.map(serie => serie.rates);
+					series.rates = sortedData.map(serie => serie.rates[0]);
 					this.setState({ series });
 					let rates = {
 						BTC: series.rates[series.rates.length - 1].BTC,
