@@ -288,7 +288,10 @@ class App extends React.Component {
 								image={this.state.pics[x]}
 								article={article}
 								convertDate={this.convertDate}
-								key={new Date(article.publishedAt).getTime()}
+								key={
+									Number(new Date(article.publishedAt).getTime()) +
+									Math.random() * 10000
+								}
 							/>
 						);
 					})}
@@ -327,7 +330,10 @@ class App extends React.Component {
 											<SmallNew
 												article={article}
 												convertDate={this.convertDate}
-												key={new Date(article.publishedAt).getTime()}
+												key={
+													Number(new Date(article.publishedAt).getTime()) +
+													Math.random() * 10000
+												}
 											/>
 										);
 									})}
@@ -340,7 +346,10 @@ class App extends React.Component {
 									<BigNew
 										article={article}
 										convertDate={this.convertDate}
-										key={new Date(article.publishedAt).getTime()}
+										key={
+											Number(new Date(article.publishedAt).getTime()) +
+											Math.random() * 10000
+										}
 									/>
 								);
 							})}
@@ -364,7 +373,10 @@ class App extends React.Component {
 										<SmallNew
 											article={article}
 											convertDate={this.convertDate}
-											key={new Date(article.publishedAt).getTime()}
+											key={
+												Number(new Date(article.publishedAt).getTime()) +
+												Math.random() * 10000
+											}
 										/>
 									);
 								})}
