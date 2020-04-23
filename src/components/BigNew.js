@@ -29,6 +29,7 @@ class BigNew extends React.Component {
 				className="mainNews_recent"
 				href={this.state.article.url}
 				target="_blank"
+				rel="noopener noreferrer"
 			>
 				<div
 					className="mainNews_recent_img"

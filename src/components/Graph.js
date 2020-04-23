@@ -79,9 +79,9 @@ class ApexChart extends Component {
 						<small>24 HOUR % CHANGE</small>
 						<h4
 							className={
-								this.assignBackgroundColor() == 'green'
+								this.assignBackgroundColor() === 'green'
 									? 'green'
-									: this.assignBackgroundColor() == 'red'
+									: this.assignBackgroundColor() === 'red'
 									? 'red'
 									: null
 							}

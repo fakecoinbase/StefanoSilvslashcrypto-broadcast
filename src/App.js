@@ -98,8 +98,6 @@ class App extends React.Component {
 		this.setState({
 			pics: this.pickRandomImage(images.mainImg, 5)
 		});
-		let randomImages =
-			images.mainImg[Math.floor(Math.random() * images.mainImg.length)];
 
 		axios
 			.get(
@@ -220,7 +218,7 @@ class App extends React.Component {
 					};
 					this.setState({ rates });
 				}
-			);
+			});
 		}
 	}
 
@@ -303,6 +301,7 @@ class App extends React.Component {
 							<a
 								href={this.state.recentArticles[0].url}
 								target="_blank"
+								rel="noopener noreferrer"
 								className="mainNews_recent"
 							>
 								<div
@@ -373,10 +372,18 @@ class App extends React.Component {
 					</div>
 				</div>
 				<div className="bottombar">
-					<a href="https://github.com/StefanoSilv" target="_blank">
+					<a
+						href="https://github.com/StefanoSilv"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						Developed by Stefano Silvestrini
 					</a>
-					<a href="https://newsapi.org" target="_blank">
+					<a
+						href="https://newsapi.org"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						Powered by NewsAPI.org
 					</a>
 				</div>

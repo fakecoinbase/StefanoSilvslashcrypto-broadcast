@@ -37,6 +37,7 @@ class TopNew extends React.Component {
 				style={{ backgroundImage: `url(${this.state.image})` }}
 				href={this.state.article.url}
 				target="_blank"
+				rel="noopener noreferrer"
 			>
 				<h3>{this.state.article.title}</h3>
 				<small>

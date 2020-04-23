@@ -26,7 +26,11 @@ class SmallNew extends React.Component {
 	render() {
 		return (
 			<li className="li_grid">
-				<a href={this.state.article.url} target="_blank">
+				<a
+					href={this.state.article.url}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
 					<div
 						className="otherNews_recent_image"
 						style={{ backgroundImage: `url(${this.state.article.urlToImage})` }}
