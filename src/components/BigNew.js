@@ -17,12 +17,6 @@ class BigNew extends React.Component {
 			article: this.props.article
 		});
 	}
-
-	componentWillReceiveProps(props) {
-		this.setState({
-			article: props.article
-		});
-	}
 	render() {
 		return (
 			<a

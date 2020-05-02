@@ -18,11 +18,6 @@ class SmallNew extends React.Component {
 		});
 	}
 
-	componentWillReceiveProps(props) {
-		this.setState({
-			article: props.article
-		});
-	}
 	render() {
 		return (
 			<li className="li_grid">

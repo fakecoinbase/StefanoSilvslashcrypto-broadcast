@@ -28,17 +28,27 @@ class ApexChart extends Component {
 		name: {}
 	};
 
-	componentWillReceiveProps(props) {
-		let series = [{}];
-		series[0].data = props.rates;
-		let labels = [];
-		labels = props.dates;
-		this.setState({ series });
-		this.setState({ options: { labels } });
-		let name = {};
-		name.long = props.nameLong;
-		name.short = props.nameShort;
-		this.setState({ name });
+	componentDidUpdate(props) {
+		if (props.rates !== this.props.rates) {
+			let series = [{}];
+			series[0].data = props.rates;
+			this.setState({ series });
+		}
+		if (props.dates !== this.props.dates) {
+			let labels = [];
+			labels = props.dates;
+			this.setState({ options: { labels } });
+		}
+
+		if (
+			props.nameLong !== this.props.nameLong ||
+			props.nameShort !== this.props.nameShort
+		) {
+			let name = {};
+			name.long = props.nameLong;
+			name.short = props.nameShort;
+			this.setState({ name });
+		}
 	}
 
 	assignBackgroundColor() {

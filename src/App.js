@@ -67,7 +67,7 @@ class App extends React.Component {
 		let dateFormatted;
 		if (date) {
 			let month =
-				date.substr(5, 2)[0] == 0
+				date.substr(5, 2)[0] === 0
 					? monthNames[date.substr(6, 1)[0] - 1]
 					: monthNames[date.substr(5, 2) - 1];
 			dateFormatted = `${date.substr(8, 2)} ${month} ${date.substr(0, 4)}`;
@@ -189,7 +189,7 @@ class App extends React.Component {
 		series.rates = [];
 		for (let i = 0; i < 7; i++) {
 			axios(
-				`${process.env.REACT_APP_RATES_API}?date=${this.getPastDays(i)
+				`${process.env.REACT_APP_RATES_API}/rates?date=${this.getPastDays(i)
 					.toString()
 					.substr(0, 10)}`
 			).then(res => {

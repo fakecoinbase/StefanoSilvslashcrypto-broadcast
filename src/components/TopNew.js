@@ -22,14 +22,6 @@ class TopNew extends React.Component {
 		});
 	}
 
-	componentWillReceiveProps(props) {
-		this.setState({
-			article: props.article
-		});
-		this.setState({
-			image: props.image
-		});
-	}
 	render() {
 		return (
 			<a
